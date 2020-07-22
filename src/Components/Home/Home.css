@@ -1,0 +1,11 @@
+.home{
+    width: 100%;
+    max-width:initial;
+}
+.home__title{
+    text-align: center;
+    padding-top: 20px;
+}
+.home__content{
+    margin-top: 70px;
+}

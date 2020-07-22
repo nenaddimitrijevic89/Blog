@@ -1,0 +1,16 @@
+.about__title{
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 15px;
+}
+.about__title_p{
+    text-align: center;
+    padding-bottom: 20px;
+}
+.about__story{
+    text-align: center;
+    padding-bottom: 15px;
+}
+.about__story_p{
+    text-align: center;
+}

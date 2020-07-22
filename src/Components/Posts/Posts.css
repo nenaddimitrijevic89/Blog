@@ -1,0 +1,19 @@
+.posts__title{
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.singlePost__title{
+   text-align: center;
+    padding-bottom: 20px;
+}
+.singlePost__card{
+    text-align: center;
+}
+.singlePost__link{
+    text-align: center;
+    padding-bottom: 15px;
+}
+.singlePost__back{
+    padding-top: 25px;
+}
