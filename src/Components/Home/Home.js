@@ -3,8 +3,6 @@ import { Header } from '../Header/Header';
 import { TextInput, Textarea, Container, Icon, Button } from 'react-materialize';
 import './Home.css';
 
-
-
 class Home extends React.Component {
     constructor(props) {
         super(props);
@@ -38,6 +36,10 @@ class Home extends React.Component {
         this.setState({ [event.target.name]: event.target.value });
     }
 
+    clearState = () => {
+        this.setState({ title: "", post: "" })
+    }
+
     render() {
         return (
             <div>
@@ -64,6 +66,7 @@ class Home extends React.Component {
                             id="Textarea-12"
                         />
                         <Button
+                            onClick={this.clearState}
                             large
                             node="a"
                             style={{ marginRight: '5px' }}
@@ -81,7 +84,6 @@ class Home extends React.Component {
                         >
                             Save
                     </Button>
-                        {/* <button type="submit">Submit</button> */}
                     </form>
                 </Container>
             </div >

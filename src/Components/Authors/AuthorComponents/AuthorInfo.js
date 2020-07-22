@@ -15,7 +15,7 @@ const AuthorInfo = ({ name, id, username, email, phone, website }) => {
                     horizontal
                     revealIcon={<Icon>more_vert</Icon>}
                 >
-                    <h5>{name}</h5>
+                    <h5><i class="fa fa-user"></i> {name}</h5>
                     <h6>id: {id} </h6>
                     <h6>username: {username} </h6>
                     <h6>email: {email} </h6>

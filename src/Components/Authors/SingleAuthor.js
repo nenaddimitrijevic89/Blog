@@ -1,11 +1,11 @@
 import React from 'react';
 import { fetchSingleAuthor } from '../../Data/fetch';
 import { Container } from 'react-materialize';
-import './Authors.css'
+import style from './Authors.module.css';
 import { AuthorInfo } from './AuthorComponents/AuthorInfo';
 import { AuthorAddress } from './AuthorComponents/AuthorAddress';
 import { Header } from '../Header/Header';
-import { Link } from 'react-router-dom';
+import { AuthorCompany } from './AuthorComponents/AuthorCompany';
 
 class SingleAuthor extends React.Component {
     constructor(props) {
@@ -23,7 +23,6 @@ class SingleAuthor extends React.Component {
     }
 
     renderInfo = () => (
-
         <>
             <AuthorInfo
                 name={this.state.singleAuthor.name}
@@ -40,9 +39,11 @@ class SingleAuthor extends React.Component {
                 city={this.state.singleAuthor.address.city}
                 zipcode={this.state.singleAuthor.address.zipcode}
             />
+            <AuthorCompany
+                name={this.state.singleAuthor.company.name}
+                activity={this.state.singleAuthor.company.bs}
+            />
         </>
-
-
     )
 
     render() {
@@ -50,7 +51,7 @@ class SingleAuthor extends React.Component {
             <div>
                 <Header />
                 <Container>
-                    <h4 className="singleAuthor__title">SINGLE AUTHOR</h4>
+                    <h4 className={style.title}>SINGLE AUTHOR</h4>
                     {this.state.singleAuthor && this.renderInfo()}
                 </Container>
             </div>
