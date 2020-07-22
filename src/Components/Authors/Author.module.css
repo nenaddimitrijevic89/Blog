@@ -1,6 +1,9 @@
 .background{
     background-color: #5E565A;
     color: #EFECCA;
+    box-shadow: 0 4px 7px 0 rgba(0,0,0,.14),
+    0 10px 10px -2px rgba(0,0,0,.12),
+    0 4px 5px 0 rgba(0,0,0,.2);
 }
 
 .margin{

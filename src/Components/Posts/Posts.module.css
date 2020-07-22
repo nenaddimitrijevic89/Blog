@@ -1,0 +1,32 @@
+.title{
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #5E565A;
+}
+.singlePostTitle{
+   text-align: center;
+    padding-bottom: 20px;
+}
+.card{
+    text-align: center;
+    background-color: #5E565A;
+    color: #EFECCA;
+}
+.link{
+    text-align: center;
+    padding-bottom: 15px;
+    color: #5E565A;
+}
+.back{
+    padding-top: 25px;
+    color: #5E565A;
+}
+.background{
+    background-color: #5E565A;
+    color: #EFECCA;
+}
+.textColor{
+    color: #5E565A;
+    cursor: pointer;
+}
