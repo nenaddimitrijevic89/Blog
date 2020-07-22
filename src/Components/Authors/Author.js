@@ -1,6 +1,7 @@
 import React from 'react';
-import { Row, Col, Collection, CollectionItem } from 'react-materialize';
+import { Row, Col } from 'react-materialize';
 import { fetchAuthorPosts } from '../../Data/fetch';
+import style from './Author.module.css';
 
 class Author extends React.Component {
   constructor() {
@@ -9,21 +10,21 @@ class Author extends React.Component {
       posts: []
     }
   }
+
   componentDidMount() {
     fetchAuthorPosts(this.props.id)
       .then(data => {
         this.setState({ posts: data })
       })
   }
+
   render() {
     return (
       <Row>
-        <Col m={12} s={12}>
-          <Collection>
-            <CollectionItem >
-              {`${this.props.name} (${this.state.posts.length})`}
-            </CollectionItem>
-          </Collection>
+        <Col m={12} s={12} className={style.background}>
+          <h5 className={style.margin}>
+            <i className={`fa fa-user ${style.white}`}></i> {`${this.props.name} (${this.state.posts.length} posts)`}
+          </h5>
         </Col>
       </Row>
     )

@@ -1,12 +1,13 @@
 import React from 'react';
 import { Container, Navbar, NavItem, Icon } from 'react-materialize';
 import { Link } from 'react-router-dom';
-import './Header.css';
+import style from './Header.module.css';
 
 const Header = () => {
     return (
-        <Container className="header">
+        <Container className={style.header}>
             <Navbar
+                className={style.background}
                 alignLinks="right"
                 brand={<Link to="/">BIT BLOG</Link>}
                 centerChildren
@@ -25,16 +26,16 @@ const Header = () => {
                     preventScrolling: true
                 }}
             >
-                <Link to='/'> <NavItem>
+                <Link to='/'> <NavItem className={style.textColor}>
                     Home
                 </NavItem> </Link>
-                <Link to='/Posts'> <NavItem>
+                <Link to='/Posts'> <NavItem className={style.textColor}>
                     Posts
                 </NavItem> </Link>
-                <Link to='/Authors'> <NavItem>
+                <Link to='/Authors'> <NavItem className={style.textColor}>
                     Authors
                 </NavItem> </Link>
-                <Link to='/About'> <NavItem>
+                <Link to='/About'> <NavItem className={style.textColor}>
                     About
                 </NavItem> </Link>
             </Navbar>

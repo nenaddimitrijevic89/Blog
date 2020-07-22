@@ -1,13 +1,13 @@
 import React from 'react';
-import { Row, Col, Card} from 'react-materialize';
+import { Row, Col, Card } from 'react-materialize';
 
 const AuthorAddress = ({ street, city, zipcode, lat, lng }) => {
     return (
         <Row>
             <Col m={8} offset="m2" s={12}>
                 <Card className="blue-grey darken-1"
-                textClassName="white-text">
-                    <h5>ADDRESS</h5>
+                    textClassName="white-text">
+                    <h5><i class="fa fa-map-marker"></i> ADDRESS</h5>
                     <h6>{`street: ${street}`}</h6>
                     <h6>{`city: ${city}`}</h6>
                     <h6>{`zipcode: ${zipcode}`}</h6>
