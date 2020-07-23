@@ -5,6 +5,7 @@ import { Post } from './Post';
 import style from './Posts.module.css';
 import { Container } from 'react-materialize';
 import { Link } from 'react-router-dom';
+import { Loader } from '../Loader/Loader';
 
 
 class Posts extends React.Component {
@@ -12,7 +13,8 @@ class Posts extends React.Component {
         super(props);
 
         this.state = {
-            posts: []
+            posts: [],
+            isLoading: true
         }
     }
     componentDidMount() {
@@ -20,24 +22,29 @@ class Posts extends React.Component {
             .then(data => {
                 this.setState({ posts: data.slice(0, 20) })
             })
+            .finally(() => this.setState({ isLoading: false }))
     }
 
     render() {
         return (
             <div className="posts">
                 <Header />
-                <h4 className={style.title}><i className='fa fa-file-text'></i> POSTS</h4>
-                <Container>
-                    {this.state.posts.map(post =>
-                        <Link to={`/posts/singlepost/${post.id}`} key={post.id}>
-                            <Post
-                                key={post.id}
-                                id={post.id}
-                                title={post.title}
-                            />
-                        </Link>
-                    )}
-                </Container>
+                {this.state.isLoading
+                    ? <Loader />
+                    : <><h4 className={style.title}><i className='fa fa-file-text'></i> POSTS</h4>
+                        <Container>
+                            {this.state.posts.map(post =>
+                                <Link to={`/posts/singlepost/${post.id}`} key={post.id}>
+                                    <Post
+                                        key={post.id}
+                                        id={post.id}
+                                        title={post.title}
+                                    />
+                                </Link>
+                            )}
+                        </Container></>
+                }
+
             </div>
         )
     }

@@ -5,12 +5,14 @@ import { Container } from 'react-materialize';
 import style from './Authors.module.css';
 import { Link } from 'react-router-dom';
 import { authorsService } from '../../services/authorsService';
+import { Loader } from '../Loader/Loader';
 
 class Authors extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            authors: []
+            authors: [],
+            isLoading: true
         }
     }
 
@@ -19,23 +21,26 @@ class Authors extends React.Component {
             .then(data => {
                 this.setState({ authors: data })
             })
+            .finally(() => this.setState({ isLoading: false }))
     }
 
     render() {
         return (
             <div>
                 <Header />
-                <Container>
-                    <h4 className={style.title}>AUTHORS</h4>
-                    {this.state.authors.map(author =>
-                        <Link to={`/authors/singleauthor/${author.id}`}>
-                            <Author name={author.name} id={author.id} />
-                        </Link>
+                {this.state.isLoading
+                    ? <Loader />
+                    : <Container>
+                        <h4 className={style.title}>AUTHORS</h4>
+                        {this.state.authors.map(author =>
+                            <Link to={`/authors/singleauthor/${author.id}`}>
+                                <Author name={author.name} id={author.id} />
+                            </Link>
 
-                    )}
-                </Container>
+                        )}
+                    </Container>
+                }
             </div>
-
         )
     }
 }
