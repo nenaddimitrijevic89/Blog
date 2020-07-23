@@ -6,12 +6,14 @@ import { AuthorAddress } from './AuthorComponents/AuthorAddress';
 import { Header } from '../Header/Header';
 import { AuthorCompany } from './AuthorComponents/AuthorCompany';
 import { authorsService } from '../../services/authorsService';
+import { Loader } from '../Loader/Loader';
 
 class SingleAuthor extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            singleAuthor: null
+            singleAuthor: null,
+            isLoading: true
         }
     }
     componentDidMount() {
@@ -19,7 +21,7 @@ class SingleAuthor extends React.Component {
             .then(data => {
                 this.setState({ singleAuthor: data })
             })
-
+            .finally(() => this.setState({ isLoading: false }))
     }
 
     renderInfo = () => (
@@ -50,10 +52,14 @@ class SingleAuthor extends React.Component {
         return (
             <div>
                 <Header />
-                <Container>
-                    <h4 className={style.title}>SINGLE AUTHOR</h4>
-                    {this.state.singleAuthor && this.renderInfo()}
-                </Container>
+                {this.state.isLoading
+                    ? <Loader />
+                    : <Container>
+                        <h4 className={style.title}>SINGLE AUTHOR</h4>
+                        {this.state.singleAuthor && this.renderInfo()}
+                    </Container>
+                }
+
             </div>
         )
     }
