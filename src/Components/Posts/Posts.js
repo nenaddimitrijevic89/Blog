@@ -1,6 +1,6 @@
 import React from 'react';
 import { Header } from '../Header/Header';
-import { fetchPosts } from '../../Data/fetch';
+import { postsService } from '../../services/postsService';
 import { Post } from './Post';
 import style from './Posts.module.css';
 import { Container } from 'react-materialize';
@@ -16,7 +16,7 @@ class Posts extends React.Component {
         }
     }
     componentDidMount() {
-        fetchPosts()
+        postsService.getPosts()
             .then(data => {
                 this.setState({ posts: data.slice(0, 20) })
             })

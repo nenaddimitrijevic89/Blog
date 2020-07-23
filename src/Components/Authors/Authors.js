@@ -1,10 +1,10 @@
 import React from 'react';
 import { Header } from '../Header/Header';
-import { fetchAuthors } from '../../Data/fetch';
-import { Author } from './Author';
+import { Author } from './Author/Author';
 import { Container } from 'react-materialize';
 import style from './Authors.module.css';
 import { Link } from 'react-router-dom';
+import { authorsService } from '../../services/authorsService';
 
 class Authors extends React.Component {
     constructor(props) {
@@ -15,7 +15,7 @@ class Authors extends React.Component {
     }
 
     componentDidMount() {
-        fetchAuthors()
+        authorsService.getAuthors()
             .then(data => {
                 this.setState({ authors: data })
             })

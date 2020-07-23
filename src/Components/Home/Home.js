@@ -2,6 +2,7 @@ import React from 'react';
 import { Header } from '../Header/Header';
 import { TextInput, Textarea, Container, Icon, Button } from 'react-materialize';
 import './Home.css';
+import { postsService } from '../../services/postsService';
 
 class Home extends React.Component {
     constructor(props) {
@@ -18,16 +19,17 @@ class Home extends React.Component {
     submitHandler(event) {
         event.preventDefault()
 
-        fetch('https://jsonplaceholder.typicode.com/posts', {
-            method: 'POST',
-            body: JSON.stringify({
-                title: this.state.title,
-                body: this.state.post
-            }),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        })
+        // fetch('https://jsonplaceholder.typicode.com/posts', {
+        //     method: 'POST',
+        //     body: JSON.stringify({
+        //         title: this.state.title,
+        //         body: this.state.post
+        //     }),
+        //     headers: {
+        //         "Content-type": "application/json; charset=UTF-8"
+        //     }
+        // })
+        postsService.postPost(this.state.title, this.state.post)
             .then(response => response.json())
             .then(data => console.log(data))
         this.props.history.push('/posts')
