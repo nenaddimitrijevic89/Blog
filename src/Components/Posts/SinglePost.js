@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchSinglePost, fetchAuthorPosts } from '../../Data/fetch';
+import { postsService } from '../../services/postsService';
 import { Row, Col, Container, Card, Icon } from 'react-materialize';
 import style from './Posts.module.css';
 import { Link } from 'react-router-dom';
@@ -17,10 +17,10 @@ class SinglePost extends React.Component {
     }
 
     componentDidMount() {
-        fetchSinglePost(this.props.match.params.id)
+        postsService.getSinglePost(this.props.match.params.id)
             .then(data => {
                 this.setState({ singlePost: data })
-                fetchAuthorPosts(this.state.singlePost.userId)
+                postsService.getAuthorPosts(this.state.singlePost.userId)
                     .then(data => {
                         this.setState({ authorPosts: data })
                     })
@@ -50,7 +50,7 @@ class SinglePost extends React.Component {
                                 closeIcon={<Icon>close</Icon>}
                                 revealIcon={<Icon>more_vert</Icon>}
                             >
-                                <h4><i className='fa fa-file-text'></i> {this.state.singlePost.id}</h4>
+                                <h4><i className='fa fa-file-text'></i> post {this.state.singlePost.id}</h4>
                                 <h5>"{this.state.singlePost.title}"</h5>
                                 <h6>{this.state.singlePost.body}</h6>
                             </Card>
@@ -59,7 +59,8 @@ class SinglePost extends React.Component {
                     {this.state.showAllPosts
                         ? <><h5 className={style.textColor} onClick={this.showPosts}><i className="fa fa-arrow-up"></i> hide posts</h5>
                             {this.state.authorPosts.map(post =>
-                                <Link to={`/posts/singlepost/${post.id}`}><Post
+                                <Link to={`/posts/singlepost/${post.id}`} key={post.id}><Post
+                                    key={post.id}
                                     id={post.id}
                                     title={post.title}
                                 /></Link>
@@ -67,7 +68,8 @@ class SinglePost extends React.Component {
                         </>
                         : <><h5 className={style.textColor} onClick={this.showPosts}><i className="fa fa-arrow-down"></i> more posts from same author</h5>
                             {this.state.authorPosts.slice(0, 3).map(post =>
-                                <Link to={`/posts/singlepost/${post.id}`}><Post
+                                <Link to={`/posts/singlepost/${post.id}`} key={post.id}><Post
+                                    key={post.id}
                                     id={post.id}
                                     title={post.title}
                                 /></Link>

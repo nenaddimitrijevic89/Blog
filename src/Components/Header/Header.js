@@ -29,13 +29,13 @@ const Header = () => {
                 <Link to='/'> <NavItem className={style.textColor}>
                     Home
                 </NavItem> </Link>
-                <Link to='/Posts'> <NavItem className={style.textColor}>
+                <Link to='/posts'> <NavItem className={style.textColor}>
                     Posts
                 </NavItem> </Link>
-                <Link to='/Authors'> <NavItem className={style.textColor}>
+                <Link to='/authors'> <NavItem className={style.textColor}>
                     Authors
                 </NavItem> </Link>
-                <Link to='/About'> <NavItem className={style.textColor}>
+                <Link to='/about'> <NavItem className={style.textColor}>
                     About
                 </NavItem> </Link>
             </Navbar>

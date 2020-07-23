@@ -1,11 +1,11 @@
 import React from 'react';
-import { fetchSingleAuthor } from '../../Data/fetch';
 import { Container } from 'react-materialize';
 import style from './Authors.module.css';
 import { AuthorInfo } from './AuthorComponents/AuthorInfo';
 import { AuthorAddress } from './AuthorComponents/AuthorAddress';
 import { Header } from '../Header/Header';
 import { AuthorCompany } from './AuthorComponents/AuthorCompany';
+import { authorsService } from '../../services/authorsService';
 
 class SingleAuthor extends React.Component {
     constructor(props) {
@@ -15,7 +15,7 @@ class SingleAuthor extends React.Component {
         }
     }
     componentDidMount() {
-        fetchSingleAuthor(this.props.match.params.id)
+        authorsService.getSingleAuthor(this.props.match.params.id)
             .then(data => {
                 this.setState({ singleAuthor: data })
             })
@@ -34,8 +34,8 @@ class SingleAuthor extends React.Component {
             />
             <AuthorAddress
                 street={this.state.singleAuthor.address.street}
-                lat={this.state.singleAuthor.address.geo.lat}
-                lng={this.state.singleAuthor.address.geo.lng}
+                lat={this.state.singleAuthor.address.lat}
+                lng={this.state.singleAuthor.address.lng}
                 city={this.state.singleAuthor.address.city}
                 zipcode={this.state.singleAuthor.address.zipcode}
             />

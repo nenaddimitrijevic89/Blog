@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'react-materialize';
-import { fetchAuthorPosts } from '../../Data/fetch';
+import { postsService } from '../../../services/postsService';
 import style from './Author.module.css';
 
 class Author extends React.Component {
@@ -12,7 +12,7 @@ class Author extends React.Component {
   }
 
   componentDidMount() {
-    fetchAuthorPosts(this.props.id)
+    postsService.getAuthorPosts(this.props.id)
       .then(data => {
         this.setState({ posts: data })
       })
