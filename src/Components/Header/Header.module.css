@@ -9,3 +9,16 @@
 .textColor{
     color: #EFECCA;
 }
+.nav{
+    display: flex;
+}
+@media only screen and(max-width:992px){
+    .nav {
+        display: flex;
+        flex-direction: column;
+        padding-left: 10px;
+      }
+      .textColor{
+          color: #5E565A;
+      }
+}

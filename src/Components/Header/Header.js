@@ -26,18 +26,20 @@ const Header = () => {
                     preventScrolling: true
                 }}
             >
-                <Link to='/'> <NavItem className={style.textColor}>
-                    Home
+                <div className={style.nav}>
+                    <Link to='/'> <NavItem className={style.textColor}>
+                        Home
                 </NavItem> </Link>
-                <Link to='/posts'> <NavItem className={style.textColor}>
-                    Posts
+                    <Link to='/posts'> <NavItem className={style.textColor}>
+                        Posts
                 </NavItem> </Link>
-                <Link to='/authors'> <NavItem className={style.textColor}>
-                    Authors
+                    <Link to='/authors'> <NavItem className={style.textColor}>
+                        Authors
                 </NavItem> </Link>
-                <Link to='/about'> <NavItem className={style.textColor}>
-                    About
+                    <Link to='/about'> <NavItem className={style.textColor}>
+                        About
                 </NavItem> </Link>
+                </div>
             </Navbar>
         </Container>
     );
