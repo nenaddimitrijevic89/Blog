@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header } from '../Header/Header';
 import { TextInput, Textarea, Container, Icon, Button } from 'react-materialize';
-import './Home.css';
+import style from './Home.module.css';
 import { postsService } from '../../services/postsService';
 
 class Home extends React.Component {
@@ -19,16 +19,6 @@ class Home extends React.Component {
     submitHandler(event) {
         event.preventDefault()
 
-        // fetch('https://jsonplaceholder.typicode.com/posts', {
-        //     method: 'POST',
-        //     body: JSON.stringify({
-        //         title: this.state.title,
-        //         body: this.state.post
-        //     }),
-        //     headers: {
-        //         "Content-type": "application/json; charset=UTF-8"
-        //     }
-        // })
         postsService.postPost(this.state.title, this.state.post)
             .then(response => response.json())
             .then(data => console.log(data))
@@ -48,7 +38,7 @@ class Home extends React.Component {
             <div>
                 <Header />
                 <Container>
-                    <h4 className="home__title">NEW POST</h4>
+                    <h4 className={style.title}>NEW POST</h4>
                     <form>
                         <h6>Title</h6>
                         <TextInput
@@ -59,7 +49,7 @@ class Home extends React.Component {
                             id="TextInput-4"
                             label="Post title"
                         />
-                        <h6 className='home__content'>Content</h6>
+                        <h6 className={style.content}>Content</h6>
                         <Textarea
                             type="text"
                             name="post"
@@ -72,7 +62,7 @@ class Home extends React.Component {
                             onClick={this.clearState}
                             large
                             node="a"
-                            style={{ marginRight: '5px' }}
+                            className={style.myButton}
                             waves="light"
                         >
                             Cancel
@@ -82,7 +72,7 @@ class Home extends React.Component {
                             type="submit"
                             large
                             node="Save"
-                            style={{ marginRight: '5px' }}
+                            className={style.myButton}
                             waves="light"
                         >
                             Save

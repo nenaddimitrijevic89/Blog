@@ -28,7 +28,11 @@ class SinglePost extends React.Component {
                     })
             })
             .finally(() => this.setState({ isLoading: false }))
+    }
 
+    readPost = (post) => {
+        console.log("aaaaaaaaaaaa")
+        this.setState({ singlePost: post })
     }
 
     showPosts = () => {
@@ -64,7 +68,7 @@ class SinglePost extends React.Component {
                         {this.state.showAllPosts
                             ? <><h5 className={style.textColor} onClick={this.showPosts}><i className="fa fa-arrow-up"></i> hide posts</h5>
                                 {this.state.authorPosts.map(post =>
-                                    <Link to={`/posts/singlepost/${post.id}`} key={post.id}><Post
+                                    <Link to={`/posts/singlepost/${post.id}`} key={post.id} onClick={() => this.readPost(post)}><Post
                                         key={post.id}
                                         id={post.id}
                                         title={post.title}
@@ -73,7 +77,7 @@ class SinglePost extends React.Component {
                             </>
                             : <><h5 className={style.textColor} onClick={this.showPosts}><i className="fa fa-arrow-down"></i> more posts from same author</h5>
                                 {this.state.authorPosts.slice(0, 3).map(post =>
-                                    <Link to={`/posts/singlepost/${post.id}`} key={post.id}><Post
+                                    <Link to={`/posts/singlepost/${post.id}`} key={post.id} onClick={() => this.readPost(post)}><Post
                                         key={post.id}
                                         id={post.id}
                                         title={post.title}

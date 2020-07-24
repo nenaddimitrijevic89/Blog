@@ -1,13 +1,15 @@
 import React from 'react';
-import { Footer, } from 'react-materialize';
+import { Navbar } from 'react-materialize';
+import style from './Footer.module.css';
 
-const FooterHome = () => {
+const Footer = () => {
     return (
-        <Footer
-            copyrights="&copy; 2015 Copyright Text"
-        >
-        </Footer>
+        <Navbar
+            className={`${style.footer} justify-content-center`}
+            menuIcon={<div className={style.display}></div>}
+            brand={<span className={style.name}>&copy; 2020, by Nenad</span>}>
+        </Navbar>
     )
 }
 
-export { FooterHome };
+export { Footer };

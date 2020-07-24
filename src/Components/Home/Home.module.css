@@ -1,0 +1,14 @@
+title{
+    text-align: center;
+    padding-top: 20px;
+}
+.content{
+    margin-top: 70px;
+}
+.myButton{
+    margin-right: 5px;
+    background-color: #5E565A;
+}
+.myButton:active, .myButton:hover{
+    background-color: orange;
+}
