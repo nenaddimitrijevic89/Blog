@@ -12,13 +12,12 @@
 .nav{
     display: flex;
 }
-@media only screen and(max-width:992px){
+
+@media only screen and (max-width:992px) {
     .nav {
-        display: flex;
-        flex-direction: column;
-        padding-left: 10px;
+        flex-direction: column !important;
       }
       .textColor{
-          color: #5E565A;
+          color: #5E565A !important;
       }
 }
