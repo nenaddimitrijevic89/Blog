@@ -22,6 +22,7 @@
 .back{
     padding-top: 25px;
     color: #5E565A;
+    cursor: pointer;
 }
 .background{
     background-color: #5E565A;
