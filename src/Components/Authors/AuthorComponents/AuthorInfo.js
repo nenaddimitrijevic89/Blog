@@ -3,12 +3,14 @@ import { Row, Col, Card, Icon, CardTitle } from 'react-materialize';
 import unnamed from '../../../Images/unnamed.png';
 import { Link } from "react-router-dom";
 import style from './AuthorComponents.module.css';
+import { goBack } from '../../../shared/utilities';
 
 const AuthorInfo = ({ name, id, username, email, phone, website }) => {
+
     return (
         <Row>
             <Col m={8} offset="m2" s={12}>
-                <Link to="/authors" className={style.textColor}><i className="fa fa-arrow-left"></i> Back</Link>
+                <i className={`${style.textColor} fa fa-arrow-left`} onClick={() => goBack()}> <span>Back</span></i>
                 <Card className={style.background}
                     closeIcon={<Icon>close</Icon>}
                     header={<CardTitle image={unnamed} />}

@@ -1,6 +1,8 @@
-title{
-    text-align: center;
+.title{
+    text-align: center !important;
     padding-top: 20px;
+    width: 100%;
+    color: #5E565A;
 }
 .content{
     margin-top: 70px;

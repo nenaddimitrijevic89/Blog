@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Post } from './Post';
 import { Header } from '../Header/Header';
 import { Loader } from '../Loader/Loader';
+import { goBack } from '../../shared/utilities';
 
 class SinglePost extends React.Component {
     constructor(props) {
@@ -31,7 +32,6 @@ class SinglePost extends React.Component {
     }
 
     readPost = (post) => {
-        console.log("aaaaaaaaaaaa")
         this.setState({ singlePost: post })
     }
 
@@ -46,7 +46,7 @@ class SinglePost extends React.Component {
                 {this.state.isLoading
                     ? <Loader />
                     : <Container>
-                        <Link to="/posts"><h6 className={style.back}><i class="fa fa-arrow-left"></i> Back</h6></Link>
+                        <h6 className={style.back} onClick={() => goBack()}><i class="fa fa-arrow-left"></i> Back</h6>
                         <h4 className={style.singlePostTitle}>SINGLE POST</h4>
                         <Link to={`/authors/singleauthor/${this.state.singlePost.userId}`}><h5 className={style.link}><i className="fa fa-user"></i> Author</h5></Link>
                         <Row>
@@ -87,7 +87,6 @@ class SinglePost extends React.Component {
                         }
                     </Container>
                 }
-
             </div>
         )
     }
