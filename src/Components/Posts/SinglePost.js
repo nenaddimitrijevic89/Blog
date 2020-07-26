@@ -55,6 +55,7 @@ class SinglePost extends React.Component {
                                 s={12}
                             >
                                 <Card
+                                    id='po'
                                     className={style.card}
                                     closeIcon={<Icon>close</Icon>}
                                     revealIcon={<Icon>more_vert</Icon>}
@@ -75,14 +76,7 @@ class SinglePost extends React.Component {
                                     /></Link>
                                 )}
                             </>
-                            : <><h5 className={style.textColor} onClick={this.showPosts}><i className="fa fa-arrow-down"></i> more posts from same author</h5>
-                                {this.state.authorPosts.slice(0, 3).map(post =>
-                                    <Link to={`/posts/singlepost/${post.id}`} key={post.id} onClick={() => this.readPost(post)}><Post
-                                        key={post.id}
-                                        id={post.id}
-                                        title={post.title}
-                                    /></Link>
-                                )}
+                            : <><h5 className={style.textColor} onClick={this.showPosts}><i className="fa fa-arrow-down"></i> show more posts from same author</h5>
                             </>
                         }
                     </Container>
