@@ -1,7 +1,6 @@
 import React from 'react';
 import { Row, Col, Card, Icon, CardTitle } from 'react-materialize';
 import unnamed from '../../../Images/unnamed.png';
-import { Link } from "react-router-dom";
 import style from './AuthorComponents.module.css';
 import { goBack } from '../../../shared/utilities';
 
