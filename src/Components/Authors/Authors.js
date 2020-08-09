@@ -31,7 +31,7 @@ class Authors extends React.Component {
                 {this.state.isLoading
                     ? <Loader />
                     : <Container>
-                        <h4 className={style.title}>AUTHORS</h4>
+                        <h4 className={style.title}><i className='fa fa-user'></i> AUTHORS</h4>
                         {this.state.authors.map(author =>
                             <Link to={`/authors/singleauthor/${author.id}`}>
                                 <Author name={author.name} id={author.id} />
