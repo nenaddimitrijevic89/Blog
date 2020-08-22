@@ -31,7 +31,7 @@ class Posts extends React.Component {
                 <Header />
                 {this.state.isLoading
                     ? <Loader />
-                    : <><h4 className={style.title}><i className='fa fa-file-text'></i> POSTS</h4>
+                    : <><h4 className={style.title}><i className='fa fa-file-text'></i> Posts</h4>
                         <Container>
                             {this.state.posts.map(post =>
                                 <Link to={`/posts/singlepost/${post.id}`} key={post.id}>
