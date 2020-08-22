@@ -38,7 +38,7 @@ class Home extends React.Component {
             <div>
                 <Header />
                 <Container>
-                    <h4 className={style.title}>NEW POST</h4>
+                    <h4 className={style.title}>New Post</h4>
                     <form>
                         <h6>Title</h6>
                         <TextInput
