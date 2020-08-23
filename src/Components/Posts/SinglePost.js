@@ -32,7 +32,7 @@ class SinglePost extends React.Component {
     }
 
     readPost = (post) => {
-        this.setState({ singlePost: post })
+        this.setState({ singlePost: post }, ()=>window.location.reload())
     }
 
     showPosts = () => {
@@ -47,7 +47,7 @@ class SinglePost extends React.Component {
                     ? <Loader />
                     : <Container>
                         <h6 className={style.back} onClick={() => goBack()}><i class="fa fa-arrow-left"></i> Back</h6>
-                        <h4 className={style.singlePostTitle}>SINGLE POST</h4>
+                        <h4 className={style.singlePostTitle}>Single Post</h4>
                         <Link to={`/authors/singleauthor/${this.state.singlePost.userId}`}><h5 className={style.link}><i className="fa fa-user"></i> Author</h5></Link>
                         <Row>
                             <Col
