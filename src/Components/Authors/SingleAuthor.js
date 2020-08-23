@@ -55,7 +55,7 @@ class SingleAuthor extends React.Component {
                 {this.state.isLoading
                     ? <Loader />
                     : <Container>
-                        <h4 className={style.title}>SINGLE AUTHOR</h4>
+                        <h4 className={style.title}>Single Author</h4>
                         {this.state.singleAuthor && this.renderInfo()}
                     </Container>
                 }

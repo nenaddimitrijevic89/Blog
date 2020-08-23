@@ -7,7 +7,7 @@ const AuthorAddress = ({ street, city, zipcode, lat, lng }) => {
         <Row>
             <Col m={8} offset="m2" s={12}>
                 <Card className={style.background}>
-                    <h5><i class="fa fa-map-marker"></i> ADDRESS</h5>
+                    <h5><i class="fa fa-map-marker"></i> Address</h5>
                     <h6>{`street: ${street}`}</h6>
                     <h6>{`city: ${city}`}</h6>
                     <h6>{`zipcode: ${zipcode}`}</h6>
