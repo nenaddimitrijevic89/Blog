@@ -1,69 +1,63 @@
-import React from 'react';
-import { Container } from 'react-materialize';
-import style from './Authors.module.css';
-import { AuthorInfo } from './AuthorComponents/AuthorInfo';
-import { AuthorAddress } from './AuthorComponents/AuthorAddress';
-import { Header } from '../Header/Header';
-import { AuthorCompany } from './AuthorComponents/AuthorCompany';
-import { authorsService } from '../../services/authorsService';
-import { Loader } from '../Loader/Loader';
+import React, { useEffect, useState } from "react";
+import { Container } from "react-materialize";
+import style from "./Authors.module.css";
+import { AuthorInfo } from "./AuthorComponents/AuthorInfo";
+import { AuthorAddress } from "./AuthorComponents/AuthorAddress";
+import { Header } from "../Header/Header";
+import { AuthorCompany } from "./AuthorComponents/AuthorCompany";
+import { authorsService } from "../../services/authorsService";
+import { Loader } from "../Loader/Loader";
 
-class SingleAuthor extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            singleAuthor: null,
-            isLoading: true
-        }
-    }
-    componentDidMount() {
-        authorsService.getSingleAuthor(this.props.match.params.id)
-            .then(data => {
-                this.setState({ singleAuthor: data })
-            })
-            .finally(() => this.setState({ isLoading: false }))
-    }
+const SingleAuthor = () => {
+  const [singleAuthor, setSingleAuthor] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  
+  useEffect(() => {
+    authorsService
+      .getSingleAuthor(this.props.match.params.id)
+      .then((data) => {
+        setSingleAuthor(data);
+      })
+      .finally(() => setIsLoading(false));
+  }, []);
 
-    renderInfo = () => (
-        <>
-            <AuthorInfo
-                name={this.state.singleAuthor.name}
-                id={this.state.singleAuthor.id}
-                username={this.state.singleAuthor.username}
-                website={this.state.singleAuthor.website}
-                phone={this.state.singleAuthor.phone}
-                email={this.state.singleAuthor.email}
-            />
-            <AuthorAddress
-                street={this.state.singleAuthor.address.street}
-                lat={this.state.singleAuthor.address.lat}
-                lng={this.state.singleAuthor.address.lng}
-                city={this.state.singleAuthor.address.city}
-                zipcode={this.state.singleAuthor.address.zipcode}
-            />
-            <AuthorCompany
-                name={this.state.singleAuthor.company.name}
-                activity={this.state.singleAuthor.company.bs}
-            />
-        </>
-    )
+  const renderInfo = () => (
+    <>
+      <AuthorInfo
+        name={singleAuthor.name}
+        id={singleAuthor.id}
+        username={singleAuthor.username}
+        website={singleAuthor.website}
+        phone={singleAuthor.phone}
+        email={singleAuthor.email}
+      />
+      <AuthorAddress
+        street={singleAuthor.address.street}
+        lat={singleAuthor.address.lat}
+        lng={singleAuthor.address.lng}
+        city={singleAuthor.address.city}
+        zipcode={singleAuthor.address.zipcode}
+      />
+      <AuthorCompany
+        name={singleAuthor.company.name}
+        activity={singleAuthor.company.bs}
+      />
+    </>
+  );
 
-    render() {
-        return (
-            <div>
-                <Header />
-                {this.state.isLoading
-                    ? <Loader />
-                    : <Container>
-                        <h4 className={style.title}>Single Author</h4>
-                        {this.state.singleAuthor && this.renderInfo()}
-                    </Container>
-                }
+  return (
+    <div>
+      <Header />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <Container>
+          <h4 className={style.title}>Single Author</h4>
+          {singleAuthor && renderInfo()}
+        </Container>
+      )}
+    </div>
+  );
+};
 
-            </div>
-        )
-    }
-
-}
-
-export { SingleAuthor };                                     
+export { SingleAuthor };
