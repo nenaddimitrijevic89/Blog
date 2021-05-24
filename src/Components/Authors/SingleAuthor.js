@@ -7,19 +7,21 @@ import { Header } from "../Header/Header";
 import { AuthorCompany } from "./AuthorComponents/AuthorCompany";
 import { authorsService } from "../../services/authorsService";
 import { Loader } from "../Loader/Loader";
+import { useParams } from "react-router";
 
 const SingleAuthor = () => {
   const [singleAuthor, setSingleAuthor] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const { id } = useParams()
   
   useEffect(() => {
     authorsService
-      .getSingleAuthor(this.props.match.params.id)
+      .getSingleAuthor(id)
       .then((data) => {
         setSingleAuthor(data);
       })
       .finally(() => setIsLoading(false));
-  }, []);
+  }, [id]);
 
   const renderInfo = () => (
     <>
