@@ -3,34 +3,34 @@ import { PostObj } from '../entities/PostObj';
 
 class PostsService {
 
-    getPosts() {
+    async getPosts() {
         return (
-            baseURL('posts')
-                .then(response => response.json())
-                .then(posts => {
-                    let newPosts = posts.map(post => new PostObj(post))
-                    return newPosts;
-                })
+            await baseURL('posts')
+            .then(response => response.json())
+            .then(posts => {
+                let newPosts = posts.map(post => new PostObj(post))
+                return newPosts;
+            })
         )
     }
 
-    getSinglePost(id) {
+    async getSinglePost(id) {
         return (
-            baseURL(`posts/${id}`)
-                .then(response => response.json())
+            await baseURL(`posts/${id}`)
+            .then(response => response.json())
         )
     }
 
-    getAuthorPosts(id) {
+    async getAuthorPosts(id) {
         return (
-            baseURL(`posts?userId=${id}`)
-                .then(response => response.json())
+            await baseURL(`posts?userId=${id}`)
+            .then(response => response.json())
         )
     }
 
-    postPost(title, post) {
+    async postPost(title, post) {
         return (
-            baseURL('posts', {
+            await baseURL('posts', {
                 method: 'POST',
                 body: JSON.stringify({
                     title: title,
